@@ -2,7 +2,7 @@
 
 This is a starter kit for web applications using Vue, Fabric, Python, Flask and Matplotlib.
 
-It was developped as part of a [project](https://py4.varelacastelo.com/login) for one of the engineering departments of Universidad de Oviedo. The objetive was creating a didactical application for engineering students: The students use the app to graphically design sloped terrain and then the app quantifies the risk of landslides happening on it.
+It was developped as part of a [project](https://tfg.pablo.varelacastelo.com/vue-web-app.pdf) for one of the engineering departments of Universidad de Oviedo. The objetive was creating a didactical application for engineering students: The students use the app to graphically design sloped terrain and then the app quantifies the risk of landslides happening on it.
 
 # Features
 
