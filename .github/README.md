@@ -28,7 +28,7 @@ The example [website](https://py4.varelacastelo.com/login) consists of:
 
 The example website is for slope stability analysis but it is relatively easy to adapt for other purposes.
 
-# UML Diagram
+# Diagram
 
 <img src="readme_images/Landslides_Solution_Simplified.png" width="500" alt='Landslides_UML'>
 
