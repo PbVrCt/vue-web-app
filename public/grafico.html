@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="/bootstrap.min.css" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>Taludes</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.0.0-rc.3.min.js"></script>
+  </head>
+  <body>
+    <div id="plotlyGraf" width="300" heigth="300"></div>
+    <script lang="js">
+
+      // PREPARA DATOS PARA PLOTLY
+      function preparaDatosPlotly(centros, analisis) {
+        let i = 0
+        let px = 0
+        let py = 0
+        const X = []
+        const Y = []
+        const Z = []
+        for (let ny = 0; ny < centros.numeroY; ++ny) {
+          for (let nx = 0; nx < centros.numeroX; ++nx) {
+            let minCoef = Number.MAX_VALUE
+            for (let nr = 0; nr < centros.nradios; ++nr) {
+              if (nr === 0) {
+                px = analisis.coeficientes[i].centroX
+                py = analisis.coeficientes[i].centroY
+              }
+              if (analisis.coeficientes[i].coeficiente < minCoef) {
+                minCoef = analisis.coeficientes[i].coeficiente
+              }
+              ++i
+            }
+            X.push(px)
+            Y.push(py)
+            Z.push(minCoef)
+          }
+        }
+        const elem = 'plotlyGraf'
+        const data = [{ x: X, y: Y, z: Z, type: 'mesh3d' }]
+        Plotly.newPlot(elem, data)
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var id = window.location.pathname.split('/')[2]
+        axios.get('/api/talud/' + id).then(function (response) {
+          var { centros, analisis } = response.data
+          preparaDatosPlotly(centros, analisis);
+        })
+      }, false)
+    </script>
+  </body>
+</html>
