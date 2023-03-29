@@ -1,3 +1,5 @@
+### Disclaimer: I had help from my father in this project
+
 # Description
 
 This is a starter kit for web applications using Vue, Fabric, Python, Flask and Matplotlib.
